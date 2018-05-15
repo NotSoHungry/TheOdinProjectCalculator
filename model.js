@@ -1,0 +1,7 @@
+var gameModel = function () {
+
+    return {
+    } 
+}
+
+
