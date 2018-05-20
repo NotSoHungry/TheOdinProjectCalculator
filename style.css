@@ -8,14 +8,77 @@
     padding: 30px 15px 15px 15px;
 }
 
+.app-main {
+    height: 100%;
+    width: 65%;
+    float: left;
+}
+
 .app-display {
-    height: 100px;
-    width: 630px;
     background: #ffffff;
     border: solid 2px #b0b0b0;
+    height: 20%;
+    margin-bottom: 30px;
 }
 
 .app-controls {
-    width: 630px;
-    
+    height: calc(80% - 30px);
+}
+
+.controls-row {
+    height: calc(20% - 8px);
+    margin-bottom: 10px;
+}
+
+.controls-row.last {
+    margin-bottom: 0;
+}
+
+.control-btn {
+    height: 100%;
+    width: calc(25% - 7.5px);
+    margin-right: 10px;
+    border: solid 1px #C8C8C8;
+    float: left;
+    text-align: center;
+    text-transform: uppercase;
+    display: block;
+    font-family: Arial;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.control-btn:focus {
+    outline: none;
+}
+
+.control-btn:hover {
+    border: 2px solid rgb(150, 150, 150);
+}
+
+.control-btn.last {
+    margin-right: 0;
+}
+
+.control-btn.func {
+    background: #DBDBDB;
+}
+
+.control-btn.num {
+    background: #F0F0F0;
+    font-weight: 600;
+}
+
+.control-btn.bigger-font {
+    font-size: 20px;
+}
+
+.control-btn.bold {
+    font-weight: 600;
+}
+
+.app-history {
+    width: 35%;
+    height: 100%;
+    float: left;
 }

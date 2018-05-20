@@ -11,12 +11,45 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main class="app-container">
-    <section class="app-display"></section>
-    <section class="app-controls">
-        
+<main class="app-container row">
+    <div class="app-main">
+        <section class="app-display"></section>
+        <section class="app-controls">
+            <div class="controls-row row">
+                <button class="control-btn func bigger-font">+/-</button>
+                <button class="control-btn func bigger-font">%</button>
+                <button class="control-btn func">del</button>
+                <button class="control-btn func last">ac</button>
+            </div>
+            <div class="controls-row row">
+                <button class="control-btn num">7</button>
+                <button class="control-btn num">8</button>
+                <button class="control-btn num">9</button>
+                <button class="control-btn func last bigger-font">/</button>
+            </div>
+            <div class="controls-row row">
+                <button class="control-btn num">4</button>
+                <button class="control-btn num">5</button>
+                <button class="control-btn num">6</button>
+                <button class="control-btn func last">x</button>
+            </div>
+            <div class="controls-row row">
+                <button class="control-btn num">1</button>
+                <button class="control-btn num">2</button>
+                <button class="control-btn num">3</button>
+                <button class="control-btn func last bigger-font">-</button>
+            </div>
+            <div class="controls-row last row">
+                <button class="control-btn num">0</button>
+                <button class="control-btn func bigger-font bold">.</button>
+                <button class="control-btn func bigger-font">=</button>
+                <button class="control-btn func last bigger-font">+</button>
+            </div>
+        </section>
+    </div>
+    <section class="app-history">
+
     </section>
-    <section class="app-history"></section>
 </main>
 <script src="view.js"></script>
 <script src="model.js"></script>
