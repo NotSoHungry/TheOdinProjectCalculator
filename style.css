@@ -77,6 +77,28 @@
     font-weight: 600;
 }
 
+.app-display {
+    padding: 0px 10px 0px 10px;
+    font-family: Arial;
+    font-weight: 600;
+}
+
+.display-row {
+    text-align: right;
+}
+
+.display-row.current-equation {
+    color: #707070;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.display-row.current-number {
+    color: #000000;
+    font-size: 60px;
+    line-height: 80px;
+}
+
 .app-history {
     width: 35%;
     height: 100%;
