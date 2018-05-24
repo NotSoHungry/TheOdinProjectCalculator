@@ -17,20 +17,17 @@ var gameView = function () {
         allNumElements: function() {
             return this.allEl(".control-btn.num");
         },
+      
+        deleteButton: function() {
+          return this.el('.control-btn.func.delete');
+        },
 
         displayCurrentNumberElement: function() {
-            return this.el(".current-number");
+            return this.el(".current-number span");
         },
 
-        renderDisplayedNumberFromModel: function(inputNum) {
+        renderDisplayedNumber: function(inputNum) {
             this.displayCurrentNumberElement().textContent = inputNum; 
-        },
-
-        renderDisplayedNumberByUserInput: function(inputNum) {
-            let displayCurrentNumberContent = this.displayCurrentNumberElement().textContent;
-            (model.currentDisplayedValue == 0) ? this.displayCurrentNumberElement().textContent = inputNum : this.displayCurrentNumberElement().textContent += inputNum;
-            return model.currentDisplayedValue = this.displayCurrentNumberElement().textContent;
-
         }
 
     }

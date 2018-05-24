@@ -85,6 +85,8 @@
 
 .display-row {
     text-align: right;
+    height: 50%;
+    position: relative;
 }
 
 .display-row.current-equation {
@@ -93,10 +95,22 @@
     line-height: 26px;
 }
 
+.display-row.current-equation span {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 .display-row.current-number {
     color: #000000;
     font-size: 60px;
-    line-height: 80px;
+    line-height: 65px;
+}
+
+.display-row.current-number span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 .app-history {

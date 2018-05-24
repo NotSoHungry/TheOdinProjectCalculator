@@ -13,3 +13,10 @@
 var controller = gameController();
 var view = gameView();
 var model = gameModel();
+
+view.allNumElements()
+  .forEach(button => {
+    button.addEventListener('click', controller.typeNumber);
+});
+
+view.deleteButton().addEventListener('click', controller.removeNumber);
