@@ -42,7 +42,6 @@ var gameModel = function () {
                 this.currentDisplayedValue = "0";
               } else {
                 _currentTypedValue = _currentTypedValue.slice(0, _currentTypedValue.length - 1);
-                console.log(_currentTypedValue.slice(0,  _currentTypedValue.length - 1));
                 this.currentDisplayedValue = this.currentTypedValue;
               }
             }
