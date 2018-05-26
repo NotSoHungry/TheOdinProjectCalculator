@@ -6,10 +6,10 @@
 - number rendered when typed - done
 - accepts only numbers (decimal and float), "+" etc needs to be added/used in equation only - done
 
-- if "0" is displayed, pressing "0" will not add anything, unless user clicks start typing float number - almost done (floats don't work yet)
-- when user click on a ".", he starts to type float number
-- when user is typing float number, "." cannot be typed until user goes back to decimal
-- when user deletes the ".", he goes back to typing decimal
+- if "0" is displayed, pressing "0" will not add anything, unless user clicks start typing float number - done
+- when user click on a ".", he starts to type float number - done
+- when user is typing float number, "." cannot be typed until user goes back to decimal - done
+- when user deletes the ".", he goes back to typing decimal - done
 
 - values must separated by a whitespace every 4 chars (examples: "1 234", "345 678" etc) - done
 
@@ -27,6 +27,7 @@ view.allNumElements()
 });
 
 view.deleteButton().addEventListener('click', controller.removeNumber);
+view.enableFloatModeButton().addEventListener('click', controller.activateTypingInFloatMode);
 
 
 /*

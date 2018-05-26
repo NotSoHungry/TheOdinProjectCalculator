@@ -22,11 +22,11 @@ var gameView = function () {
           return this.el('.control-btn.func.delete');
         },
 
-        displayCurrentNumberButtont: function() {
+        displayCurrentNumberElement: function() {
             return this.el(".current-number span");
         },
 
-        enableFloatModeElement: function() {
+        enableFloatModeButton: function() {
             return this.el(".control-btn.float");
         },
 
@@ -51,12 +51,12 @@ var gameView = function () {
             }
             
             let strFromTempOnlyIntegerArray = tempArrayOnlyInteger.join('');
-            if (tempArrayToExtractInteger[1]) {
+            if (tempArrayToExtractInteger[1] !== undefined) {
                 this.displayCurrentNumberElement().textContent =  strFromTempOnlyIntegerArray.concat(".", tempArrayToExtractInteger[1]);
             } else {
                 this.displayCurrentNumberElement().textContent =  strFromTempOnlyIntegerArray;
             } 
-        },
+        }
 
 
 

@@ -7,13 +7,14 @@ var gameModel = function () {
         _currentDisplayedValue = "0",
         _currentValueInputA = null,
         _currentValueInputB = null,
+        _currentOperator = null,
         _currentEquation = null,
         _pastEquations = [];
 
 
     return {
-        operate: function (inputA, inputB, operation) {
-            switch (operation) {
+        operate: function (inputA, inputB, operator) {
+            switch (operator) {
                 case "+":
                 return inputA + inputB;
                 break;
@@ -43,7 +44,12 @@ var gameModel = function () {
         },
 
         addCurrentTypedValueFloatMode: function(input) {
-            _currentTypedValue += input;
+            if (!_currentTypedValue) {
+                _currentTypedValue = "0";
+                _currentTypedValue += input;
+            } else {
+                _currentTypedValue += input;
+            }
             this.currentDisplayedValue = this.currentTypedValue;
         },
 
@@ -52,8 +58,14 @@ var gameModel = function () {
                 _currentTypedValue = null;
                 this.currentDisplayedValue = "0";
             } else {
+                let valueToRemove = _currentTypedValue.slice(_currentTypedValue.length - 1);
+                if (valueToRemove === ".") {
+                    this.currentValueTypedFloatMode = false;
+                    this.currentValueTypedIntegerMode = true;
+                }
                 _currentTypedValue = _currentTypedValue.slice(0, _currentTypedValue.length - 1);
                 this.currentDisplayedValue = this.currentTypedValue;
+                (_currentTypedValue === "0") ? _currentTypedValue = null : "";
             }
         },
 
@@ -69,7 +81,7 @@ var gameModel = function () {
             _currentValueTypedIntegerMode = input;
         },
 
-        get currentValueTypedFloatlMode() {
+        get currentValueTypedFloatMode() {
             return _currentValueTypedFloatMode;
         },
 

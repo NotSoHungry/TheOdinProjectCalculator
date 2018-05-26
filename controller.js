@@ -4,7 +4,7 @@ var gameController = function () {
         
         typeNumber: function(event) {
           (model.currentValueTypedIntegerMode) ? model.addCurrentTypedValueIntegerMode(this.textContent, event) :
-          (model.currentValueTypedFloatMode) ? model.addCurrentTypedValueIntegerMode(this.textContent) : "";
+          (model.currentValueTypedFloatMode) ? model.addCurrentTypedValueFloatMode(this.textContent) : "";
           
         },
         
@@ -13,16 +13,16 @@ var gameController = function () {
         },
 
         activateTypingInFloatMode: function() {
-          if (model.currentTypedValue.indexOf(".") === -1) {
+          if (!model.currentTypedValue || model.currentTypedValue.indexOf(".") === -1) {
             model.currentValueTypedIntegerMode = false;
-            model.currentValueTypedFloatlMode = true;
+            model.currentValueTypedFloatMode = true;
             model.addCurrentTypedValueFloatMode(".");
           }
 
         }
       
       
-        }
+    }
 
 
 }    
