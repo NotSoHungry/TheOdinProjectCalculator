@@ -11,7 +11,7 @@
 - when user is typing float number, "." cannot be typed until user goes back to decimal
 - when user deletes the ".", he goes back to typing decimal
 
-- values must separated by a whitespace every 4 chars (examples: "1 234", "345 678" etc)
+- values must separated by a whitespace every 4 chars (examples: "1 234", "345 678" etc) - done
 
 */
 
@@ -27,3 +27,28 @@ view.allNumElements()
 });
 
 view.deleteButton().addEventListener('click', controller.removeNumber);
+
+
+/*
+
+function addWhiteSpace (str) {
+  let tempArrayToExtractInteger = str.split('.'),
+      tempArrayOnlyInteger = tempArrayToExtractInteger[0].split(''),
+      tempArrayOnlyIntegerReversed = [];
+
+  for (let i = 0; i < tempArrayOnlyInteger.length; i++) {
+    tempArrayOnlyIntegerReversed.unshift(tempArrayOnlyInteger[i]);
+  }
+  
+  return tempArrayOnlyIntegerReversed
+    .reduce((arrayWithWhiteSpace, currentDigit) => {
+      arrayWithWhiteSpace.push(currentDigit)
+      if (arrayWithWhiteSpace.length % 3 === 0) {
+        arrayWithWhiteSpace.push(' ');
+      }
+      return arrayWithWhiteSpace;
+  }, [])
+    .join('');
+}
+
+*/

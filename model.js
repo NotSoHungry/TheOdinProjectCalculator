@@ -2,9 +2,9 @@ var gameModel = function () {
 
     let _currentResult = 0,
         _currentTypedValue = null,
-        _currentValueTypedDecimalMode = true,
+        _currentValueTypedIntegerMode = true,
         _currentValueTypedFloatMode = false,
-        _currentDisplayedValue = 0,
+        _currentDisplayedValue = "0",
         _currentValueInputA = null,
         _currentValueInputB = null,
         _currentEquation = null,
@@ -24,7 +24,8 @@ var gameModel = function () {
         },
 
         set currentDisplayedValue(input) {
-            _currentDisplayedValue = input;
+            _currentDisplayedValue = input
+            ;
             view.renderDisplayedNumber(this.currentDisplayedValue);
         },
 
@@ -32,18 +33,18 @@ var gameModel = function () {
             return _currentDisplayedValue;
         },
 
-        addCurrentTypedValueDecimalMode: function(input, event) {
-              if (!_currentTypedValue && event.target.textContent === "0") {
-                  _currentTypedValue = null;
-                  this.currentDisplayedValue = "0";
-              } else {
-                  (!_currentTypedValue) ? _currentTypedValue = input : _currentTypedValue += input;
-                  this.currentDisplayedValue = this.currentTypedValue;
-              }
+        addCurrentTypedValueIntegerMode: function(input, event) {
+            if (!_currentTypedValue && event.target.textContent === "0") {
+                return '';
+            } else {
+                (!_currentTypedValue) ? _currentTypedValue = input : _currentTypedValue += input;
+                this.currentDisplayedValue = this.currentTypedValue;
+            }
         },
 
         addCurrentTypedValueFloatMode: function(input) {
-
+            _currentTypedValue += input;
+            this.currentDisplayedValue = this.currentTypedValue;
         },
 
         removeCurrentTypedValue: function() {
@@ -60,12 +61,12 @@ var gameModel = function () {
             return _currentTypedValue;
         },
 
-        get currentValueTypedDecimalMode() {
-            return _currentValueTypedDecimalMode;
+        get currentValueTypedIntegerMode() {
+            return _currentValueTypedIntegerMode;
         },
 
-        set currentValueTypedDecimalMode (input) {
-            _currentValueTypedDecimalMode = input;
+        set currentValueTypedIntegerMode (input) {
+            _currentValueTypedIntegerMode = input;
         },
 
         get currentValueTypedFloatlMode() {
