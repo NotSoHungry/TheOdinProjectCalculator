@@ -2,8 +2,8 @@ var gameModel = function () {
 
     let _currentResult = 0,
         _currentTypedValue = null,
-        _currentValueTyped = false,
-        _currentValueDeleted = false,
+        _currentValueTypedDecimalMode = true,
+        _currentValueTypedFloatMode = false,
         _currentDisplayedValue = 0,
         _currentValueInputA = null,
         _currentValueInputB = null,
@@ -32,31 +32,48 @@ var gameModel = function () {
             return _currentDisplayedValue;
         },
 
-        editCurrentTypedValue: function(input) {
-            if (_currentValueTyped) {
-              (_currentTypedValue === null) ? _currentTypedValue = input : _currentTypedValue += input;
-              this.currentDisplayedValue = this.currentTypedValue;
-            } else if (_currentValueDeleted) {
-              if (_currentTypedValue.length === 1) {
+        addCurrentTypedValueDecimalMode: function(input, event) {
+              if (!_currentTypedValue && event.target.textContent === "0") {
+                  _currentTypedValue = null;
+                  this.currentDisplayedValue = "0";
+              } else {
+                  (!_currentTypedValue) ? _currentTypedValue = input : _currentTypedValue += input;
+                  this.currentDisplayedValue = this.currentTypedValue;
+              }
+        },
+
+        addCurrentTypedValueFloatMode: function(input) {
+
+        },
+
+        removeCurrentTypedValue: function() {
+            if (_currentTypedValue.length === 1) {
                 _currentTypedValue = null;
                 this.currentDisplayedValue = "0";
-              } else {
+            } else {
                 _currentTypedValue = _currentTypedValue.slice(0, _currentTypedValue.length - 1);
                 this.currentDisplayedValue = this.currentTypedValue;
-              }
             }
         },
 
         get currentTypedValue() {
             return _currentTypedValue;
         },
-      
-        set currentValueTyped(input) {
-          _currentValueTyped = input;
+
+        get currentValueTypedDecimalMode() {
+            return _currentValueTypedDecimalMode;
         },
-      
-        set currentValueDeleted(input) {
-          _currentValueDeleted = input;
+
+        set currentValueTypedDecimalMode (input) {
+            _currentValueTypedDecimalMode = input;
+        },
+
+        get currentValueTypedFloatlMode() {
+            return _currentValueTypedFloatMode;
+        },
+
+        set currentValueTypedFloatMode (input) {
+            _currentValueTypedFloatMode = input;
         }
     }
 }

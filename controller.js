@@ -2,15 +2,13 @@ var gameController = function () {
 
     return {
         
-        typeNumber: function() {
-          model.currentValueTyped = true;
-          model.currentValueDeleted = false;
-          model.editCurrentTypedValue(this.textContent);
+        typeNumber: function(event) {
+          (model.currentValueTypedDecimalMode) ? model.addCurrentTypedValueDecimalMode(this.textContent, event) :
+          (model.currentValueTypedFloatMode) ? "" : "";
+          
         },
         removeNumber: function() {
-          model.currentValueDeleted = true;
-          model.currentValueTyped = false;
-          model.editCurrentTypedValue();
+          model.removeCurrentTypedValue();
         }
       
       
