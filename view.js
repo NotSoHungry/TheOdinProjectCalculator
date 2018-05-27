@@ -52,7 +52,7 @@ var gameView = function () {
             
             let strFromTempOnlyIntegerArray = tempArrayOnlyInteger.join('');
             if (tempArrayToExtractInteger[1] !== undefined) {
-                this.displayCurrentNumberElement().textContent =  strFromTempOnlyIntegerArray.concat(".", tempArrayToExtractInteger[1]);
+                this.displayCurrentNumberElement().textContent =  strFromTempOnlyIntegerArray.concat(",", tempArrayToExtractInteger[1]);
             } else {
                 this.displayCurrentNumberElement().textContent =  strFromTempOnlyIntegerArray;
             } 
