@@ -38,8 +38,8 @@ var gameView = function () {
               tempArrayOnlyIntegerReversed.unshift(tempArrayOnlyInteger[i]);
             }
             tempArrayOnlyIntegerReversed = tempArrayOnlyIntegerReversed
-              .reduce((arrayWithWhiteSpace, currentDigit, currentDigitIndex) => {
-                if (arrayWithWhiteSpace.filter(element => element !== " ").length % 3 === 0 && currentDigitIndex > 2) {
+              .reduce((arrayWithWhiteSpace, currentDigit) => {
+                if (arrayWithWhiteSpace[0] && arrayWithWhiteSpace.filter(element => element !== " ").length % 3 === 0) {
                   arrayWithWhiteSpace.push(' ');
                 }
                 arrayWithWhiteSpace.push(currentDigit);
