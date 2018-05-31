@@ -30,7 +30,7 @@ var gameView = function () {
             return this.el(".control-btn.float");
         },
 
-        renderDisplayedNumber: function(inputNum) {
+        addWhiteSpaceToDisplayedNumbers: function(inputNum) {
             let tempArrayToExtractInteger = inputNum.split('.'),
                 tempArrayOnlyInteger = tempArrayToExtractInteger[0].split(''),
                 tempArrayOnlyIntegerReversed = [];
@@ -38,8 +38,8 @@ var gameView = function () {
               tempArrayOnlyIntegerReversed.unshift(tempArrayOnlyInteger[i]);
             }
             tempArrayOnlyIntegerReversed = tempArrayOnlyIntegerReversed
-              .reduce((arrayWithWhiteSpace, currentDigit, currentDigitIndex) => {
-                if (arrayWithWhiteSpace.filter(element => element !== " ").length % 3 === 0 && currentDigitIndex > 2) {
+              .reduce((arrayWithWhiteSpace, currentDigit) => {
+                if (arrayWithWhiteSpace[0] && arrayWithWhiteSpace.filter(element => element !== " ").length % 3 === 0) {
                   arrayWithWhiteSpace.push(' ');
                 }
                 arrayWithWhiteSpace.push(currentDigit);
@@ -51,14 +51,14 @@ var gameView = function () {
             }
             
             let strFromTempOnlyIntegerArray = tempArrayOnlyInteger.join('');
-            if (tempArrayToExtractInteger[1] !== undefined) {
-                this.displayCurrentNumberElement().textContent =  strFromTempOnlyIntegerArray.concat(",", tempArrayToExtractInteger[1]);
-            } else {
-                this.displayCurrentNumberElement().textContent =  strFromTempOnlyIntegerArray;
-            } 
+            return (tempArrayToExtractInteger[1] !== undefined) ? strFromTempOnlyIntegerArray.concat(",", tempArrayToExtractInteger[1]) : strFromTempOnlyIntegerArray;
+        
+        },
+
+        renderDisplayedNumber: function(inputNum) {
+            
+            this.displayCurrentNumberElement().textContent = this.addWhiteSpaceToDisplayedNumbers(inputNum); 
         }
-
-
 
     }
 } 
