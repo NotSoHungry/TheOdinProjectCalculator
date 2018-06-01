@@ -13,6 +13,26 @@
 
 - values must separated by a whitespace every 4 chars (examples: "1 234", "345 678" etc) - done
 
+2. User needs to be able to perform mathematical equations and see curren equation above the displayed number (with current operator at the end of it)
+
+- variables to store two numbers for the mathematical operations - done
+- variable to store the information about current operation type - done
+- variable to store the current equation result - done
+
+- if current equation value is empty, pressing operator button will assign displayed number to valueA variable and wait for valueB before performing any math operation
+- after every mathematical operation, current equation result will need to be assigned to valueA and valueB
+- after every mathematival operation, current equation value is assigned as the currently displayed number
+- after every mathematical operation, if user will start typing her/his own number, current equation value will be replaced by user's input - for inputB as well as displayed number
+
+- current equation will start to be displayed as soon as user will press the operator button
+- current equation will be rendered to the latest operator character, valueB will be displayed as the main number
+
+
+
+
+
+
+
 */
 
 

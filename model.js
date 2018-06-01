@@ -8,7 +8,8 @@ var gameModel = function () {
         _currentValueInputA = null,
         _currentValueInputB = null,
         _currentOperator = null,
-        _currentEquation = null,
+        _currentEquation = [],
+        _currentEquationResult = null,
         _pastEquations = [];
 
 
