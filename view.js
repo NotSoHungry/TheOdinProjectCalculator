@@ -30,6 +30,10 @@ var gameView = function () {
             return this.el(".control-btn.float");
         },
 
+        mathOperationButtons: function () {
+            return this.allEl(".math-op");
+        },
+
         addWhiteSpaceToDisplayedNumbers: function(inputNum) {
             let tempArrayToExtractInteger = inputNum.split('.'),
                 tempArrayOnlyInteger = tempArrayToExtractInteger[0].split(''),

@@ -52,6 +52,10 @@ view.allNumElements()
 view.deleteButton().addEventListener('click', controller.removeNumber);
 view.enableFloatModeButton().addEventListener('click', controller.activateTypingInFloatMode);
 
+view.mathOperationButtons().forEach(button => {
+  button.addEventListener('click', controller.setMathOperationValues);
+});
+
 
 /*
 

@@ -19,7 +19,9 @@ var gameController = function () {
             model.addCurrentTypedValueFloatMode(".");
           }
 
-        }
+        },
+
+        
       
       
     }

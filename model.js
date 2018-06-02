@@ -8,6 +8,7 @@ var gameModel = function () {
         _currentValueInputA = null,
         _currentValueInputB = null,
         _currentOperator = null,
+        _readyForMathOperation = false,
         _currentEquation = [],
         _currentEquationResult = null,
         _pastEquations = [];
@@ -17,11 +18,16 @@ var gameModel = function () {
         operate: function (inputA, inputB, operator) {
             switch (operator) {
                 case "+":
-                return inputA + inputB;
+                return this.currentValueInputA + this.currentValueInputB;
                 break;
                 case "-":
-                return inputA - inputB;
+                return this.currentValueInputA - this.currentValueInputB;
                 break;
+                case "x":
+                return this.currentValueInputA * this.currentValueInputB;
+                break;
+                case "/":
+                return this.currentValueInputA / this.currentValueInputB;
             }
         },
 
@@ -70,6 +76,21 @@ var gameModel = function () {
             }
         },
 
+        setMathOperationValues: function() {
+            if (!this.currentValueInputA && this.currentValueInputA !== 0) {
+                this.currentValueInputA = Number(this.currentDisplayedValue);
+                this.resetCurrentTypedValue();
+            } else if (!this.currentValueInputB && this.currentValueInputB !== 0) {
+              (this.currentTypedValue) ? this.currentValueInputB = Number(this.currentDisplayedValue) : "";
+              this.resetCurrentTypedValue();
+              this.readyForMathOperation = true;
+            }
+        },
+
+        resetCurrentTypedValue: function () {
+            _currentTypedValue = null;
+        },
+
         get currentTypedValue() {
             return _currentTypedValue;
         },
@@ -106,6 +127,14 @@ var gameModel = function () {
             _currentValueInputB = input;
         },
 
+        get readyForMathOperation() {
+            return _readyForMathOperation;
+        },
+
+        set readyForMathOperation(input) {
+            _readyForMathOperation = input;
+        },
+
         get currentOperator() {
             return _currentOperator;
         },
@@ -120,7 +149,7 @@ var gameModel = function () {
 
         set currentEquationResult(input) {
             _currentEquationResult = input;
-        } 
+        }, 
 
         addCurrentEquationElement: function (element) {
             _currentEquation.push(element);
