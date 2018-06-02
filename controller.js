@@ -21,10 +21,40 @@ var gameController = function () {
 
         },
 
-        
+        performMathOperation: function () {
+          model.setMathOperationValues();
+          if (model.readyForMathOperation) {
+            model.currentEquationResult = model.operate(model.currentValueInputA, model.currentValueInputB, this.textContent);
+            model.currentValueInputA = model.currentEquationResult;
+            model.currentValueInputB = null;
+            model.readyForMathOperation = false;
+            model.currentDisplayedValue = String(model.currentEquationResult);
+
+          }
+        },
+
+        addMathOperationValues: function () {
+            if (model.currentTypedValue || (model.currentEquationResult === null && model.currentDisplayedValue == "0")) {
+              model.addCurrentEquationElements(Number(model.currentDisplayedValue), this.textContent);
+              model.resetCurrentTypedValue();
+              console.log("works");
+            }
+          },
+          
+          performMathOperation: function () {
+            if (model.currentEquation.length > 3 && !model.currentTypedValue) {
+              console.log("length check worked");
+              let currentValueA = (model.currentEquationResult) ? model.currentEquationResult : model.currentEquation[0],
+                  currentValueB = model.currentEquation[model.currentEquation.length - 2],
+                  operator = model.currentEquation[model.currentEquation.length - 3];
+                  console.log(...[currentValueA, currentValueB, operator]);
+              model.currentEquationResult = model.operate(currentValueA, currentValueB, operator);
+              model.currentDisplayedValue = String(model.currentEquationResult);
+              model.resetCurrentTypedValue();
+            } 
+        }
       
-      
-    }
+      }
 
 
 }    

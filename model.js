@@ -5,9 +5,6 @@ var gameModel = function () {
         _currentValueTypedIntegerMode = true,
         _currentValueTypedFloatMode = false,
         _currentDisplayedValue = "0",
-        _currentValueInputA = null,
-        _currentValueInputB = null,
-        _currentOperator = null,
         _readyForMathOperation = false,
         _currentEquation = [],
         _currentEquationResult = null,
@@ -18,16 +15,16 @@ var gameModel = function () {
         operate: function (inputA, inputB, operator) {
             switch (operator) {
                 case "+":
-                return this.currentValueInputA + this.currentValueInputB;
+                return inputA + inputB;
                 break;
                 case "-":
-                return this.currentValueInputA - this.currentValueInputB;
+                return inputA - inputB;
                 break;
                 case "x":
-                return this.currentValueInputA * this.currentValueInputB;
+                return inputA * inputB;
                 break;
                 case "/":
-                return this.currentValueInputA / this.currentValueInputB;
+                return inputA / inputB;
             }
         },
 
@@ -73,17 +70,6 @@ var gameModel = function () {
                 _currentTypedValue = _currentTypedValue.slice(0, _currentTypedValue.length - 1);
                 this.currentDisplayedValue = this.currentTypedValue;
                 (_currentTypedValue === "0") ? _currentTypedValue = null : "";
-            }
-        },
-
-        setMathOperationValues: function() {
-            if (!this.currentValueInputA && this.currentValueInputA !== 0) {
-                this.currentValueInputA = Number(this.currentDisplayedValue);
-                this.resetCurrentTypedValue();
-            } else if (!this.currentValueInputB && this.currentValueInputB !== 0) {
-              (this.currentTypedValue) ? this.currentValueInputB = Number(this.currentDisplayedValue) : "";
-              this.resetCurrentTypedValue();
-              this.readyForMathOperation = true;
             }
         },
 
@@ -151,9 +137,13 @@ var gameModel = function () {
             _currentEquationResult = input;
         }, 
 
-        addCurrentEquationElement: function (element) {
-            _currentEquation.push(element);
+        addCurrentEquationElements: function (...elements) {
+            _currentEquation.push(...elements);
         },
+
+        get currentEquation() {
+            return _currentEquation;
+        }
 
 
     }
