@@ -37,12 +37,13 @@ var gameController = function () {
             if (model.currentTypedValue || (model.currentEquationResult === null && model.currentDisplayedValue == "0")) {
               model.addCurrentEquationElements(Number(model.currentDisplayedValue), this.textContent);
               model.resetCurrentTypedValue();
+              (model.currentEquation.length > 3) ? model.readyForMathOperation = true : "";
               console.log("works");
             }
           },
           
           performMathOperation: function () {
-            if (model.currentEquation.length > 3 && !model.currentTypedValue) {
+            if (model.readyForMathOperation) {
               console.log("length check worked");
               let currentValueA = (model.currentEquationResult) ? model.currentEquationResult : model.currentEquation[0],
                   currentValueB = model.currentEquation[model.currentEquation.length - 2],
@@ -50,6 +51,7 @@ var gameController = function () {
                   console.log(...[currentValueA, currentValueB, operator]);
               model.currentEquationResult = model.operate(currentValueA, currentValueB, operator);
               model.currentDisplayedValue = String(model.currentEquationResult);
+              model.readyForMathOperation = false;
               model.resetCurrentTypedValue();
             } 
         }
