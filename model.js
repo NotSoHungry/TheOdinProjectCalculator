@@ -139,6 +139,7 @@ var gameModel = function () {
 
         addCurrentEquationElements: function (...elements) {
             _currentEquation.push(...elements);
+            view.renderCurrentEquation(_currentEquation);
         },
 
         get currentEquation() {

@@ -26,6 +26,10 @@ var gameView = function () {
             return this.el(".current-number span");
         },
 
+        displayCurrentEquationElement: function () {
+            return this.el(".current-equation");
+        },
+
         enableFloatModeButton: function() {
             return this.el(".control-btn.float");
         },
@@ -60,9 +64,17 @@ var gameView = function () {
         },
 
         renderDisplayedNumber: function(inputNum) {
-            
             this.displayCurrentNumberElement().textContent = this.addWhiteSpaceToDisplayedNumbers(inputNum); 
+        },
+
+        renderCurrentEquation: function (equation) {
+            this.displayCurrentEquationElement().textContent = equation
+                .map(element => {
+                    let isElementNaN = String(Number(element)) === "NaN";
+                    return (!isElementNaN) ? this.addWhiteSpaceToDisplayedNumbers(String(element)) : element;
+                })
+                .join(' ');
         }
 
     }
-} 
+}
