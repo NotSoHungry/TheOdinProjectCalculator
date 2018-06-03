@@ -19,16 +19,19 @@
 - variable to store the information about current operation type - done
 - variable to store the current equation result - done
 
-- if current valueA is empty, pressing operator button will assign displayed number to valueA variable and wait for valueB before performing any math operation
-- if valueB is set to null, app will wait for the user to provide the number - pressing operator button will not trigger any action
-- after every mathematical operation, current equation result will need to be assigned to valueA
-- after every mathematical operation, valueB will be set to null
-- after every mathematival operation, current equation value is assigned as the currently displayed number
-- after every mathematical operation, if user will start typing her/his own number, current equation value will be replaced by user's input - for inputB as well as displayed number
+- if current valueA is empty, pressing operator button will assign displayed number to valueA variable and wait for valueB before performing any math operation - done
+- if valueB isn't defined, app will wait for the user to provide the number - pressing operator button will not trigger any action - done
+- after every mathematical operation, current equation result will need to be assigned to valueA - done
+- after every mathematical operation, valueB will be set to null - done
+- after every mathematival operation, current equation value is assigned as the currently displayed number - done
+- after every mathematical operation, if user will start typing her/his own number, current equation value will be replaced by user's input - for inputB as well as displayed number - done
+- if float mode is on, performing mathematical operation will reverse the app back to integer mode - done
 
-- current equation will start to be displayed as soon as user will press the operator button
-- current equation will be rendered to the latest operator character, valueB will be displayed as the main number
-- current equation will be stored as an array, however it will be rendered as text
+- current equation will start to be displayed as soon as user will press the operator button - done
+- current equation will be rendered to the latest operator character, valueB will be displayed as the main number - done
+- current equation will be stored as an array, however it will be rendered as text - done
+- every chain of same of same precedense operations in the equation should be enclosed in parenthesis when displayed if a higher precendense operation is listed after them
+
 
 
 
