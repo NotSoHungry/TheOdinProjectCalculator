@@ -97,36 +97,12 @@ var gameModel = function () {
             _currentValueTypedFloatMode = input;
         },
 
-        get currentValueInputA() {
-            return _currentValueInputA;
-        },
-
-        set currentValueInputA(input) {
-            _currentValueInputA = input;
-        },
-
-        get currentValueInputB() {
-            return _currentValueInputB;
-        },
-
-        set currentValueInputB(input) {
-            _currentValueInputB = input;
-        },
-
         get readyForMathOperation() {
             return _readyForMathOperation;
         },
 
         set readyForMathOperation(input) {
             _readyForMathOperation = input;
-        },
-
-        get currentOperator() {
-            return _currentOperator;
-        },
-
-        set currentOperator(input) {
-            _currentOperator = input;
         },
 
         get currentEquationResult() {
