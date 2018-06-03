@@ -21,18 +21,6 @@ var gameController = function () {
 
         },
 
-        performMathOperation: function () {
-          model.setMathOperationValues();
-          if (model.readyForMathOperation) {
-            model.currentEquationResult = model.operate(model.currentValueInputA, model.currentValueInputB, this.textContent);
-            model.currentValueInputA = model.currentEquationResult;
-            model.currentValueInputB = null;
-            model.readyForMathOperation = false;
-            model.currentDisplayedValue = String(model.currentEquationResult);
-
-          }
-        },
-
         addMathOperationValues: function () {
             if (model.currentTypedValue || (model.currentEquationResult === null && model.currentDisplayedValue == "0")) {
               model.addCurrentEquationElements(Number(model.currentDisplayedValue), this.textContent);
@@ -53,6 +41,8 @@ var gameController = function () {
               model.currentDisplayedValue = String(model.currentEquationResult);
               model.readyForMathOperation = false;
               model.resetCurrentTypedValue();
+              model.currentValueTypedFloatMode = false;
+              model.currentValueTypedIntegerMode = true;
             } 
         }
       
