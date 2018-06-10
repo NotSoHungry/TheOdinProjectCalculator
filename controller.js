@@ -5,11 +5,13 @@ var gameController = function () {
         typeNumber: function(event) {
           (model.currentValueTypedIntegerMode) ? model.addCurrentTypedValueIntegerMode(this.textContent, event) :
           (model.currentValueTypedFloatMode) ? model.addCurrentTypedValueFloatMode(this.textContent) : "";
+          model.userIsTyping();
           
         },
         
         removeNumber: function() {
           model.removeCurrentTypedValue();
+          model.userIsTyping();
         },
 
         activateTypingInFloatMode: function() {
@@ -17,6 +19,7 @@ var gameController = function () {
             model.currentValueTypedIntegerMode = false;
             model.currentValueTypedFloatMode = true;
             model.addCurrentTypedValueFloatMode(".");
+            model.userIsTyping();
           }
 
         },
@@ -26,7 +29,7 @@ var gameController = function () {
               model.addCurrentEquationElements(Number(model.currentDisplayedValue), this.textContent);
               model.resetCurrentTypedValue();
               (model.currentEquation.length > 3) ? model.readyForMathOperation = true : "";
-              console.log("works");
+              model.userEndedTyping();
             }
           },
           
@@ -43,10 +46,17 @@ var gameController = function () {
               model.resetCurrentTypedValue();
               model.currentValueTypedFloatMode = false;
               model.currentValueTypedIntegerMode = true;
+              model.userEndedTyping();
             } 
-        }
-      
+        },
+
+        changeCurrentOperator: function () {
+          if (!model.isUserTyping) {
+              model.changeCurrentEquationOperator(this.textContent);
+          }
       }
+      
+    }
 
 
 }    

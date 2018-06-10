@@ -58,6 +58,7 @@ view.enableFloatModeButton().addEventListener('click', controller.activateTyping
 view.mathOperationButtons().forEach(button => {
   button.addEventListener('click', controller.addMathOperationValues);
   button.addEventListener('click', controller.performMathOperation);
+  button.addEventListener('click', controller.changeCurrentOperator);
 });
 
 

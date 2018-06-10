@@ -8,7 +8,8 @@ var gameModel = function () {
         _readyForMathOperation = false,
         _currentEquation = [],
         _currentEquationResult = null,
-        _pastEquations = [];
+        _pastEquations = [],
+        _isUserTyping = true;
 
 
     return {
@@ -29,8 +30,7 @@ var gameModel = function () {
         },
 
         set currentDisplayedValue(input) {
-            _currentDisplayedValue = input
-            ;
+            _currentDisplayedValue = input;
             view.renderDisplayedNumber(this.currentDisplayedValue);
         },
 
@@ -40,9 +40,10 @@ var gameModel = function () {
 
         addCurrentTypedValueIntegerMode: function(input, event) {
             if (!_currentTypedValue && event.target.textContent === "0") {
-                return '';
+                _currentTypedValue = input;
+                this.currentDisplayedValue = _currentTypedValue;
             } else {
-                (!_currentTypedValue) ? _currentTypedValue = input : _currentTypedValue += input;
+                (_currentTypedValue && Number(_currentDisplayedValue)) ? _currentTypedValue += input : _currentTypedValue = input;
                 this.currentDisplayedValue = this.currentTypedValue;
             }
         },
@@ -118,8 +119,22 @@ var gameModel = function () {
             view.renderCurrentEquation(_currentEquation);
         },
 
+        changeCurrentEquationOperator: function (input) {
+            let currentOperatorIndex = _currentEquation.length - 1;
+            _currentEquation.splice(currentOperatorIndex, 1, input);
+            view.renderCurrentEquation(_currentEquation);
+        },
+
         get currentEquation() {
             return _currentEquation;
+        },
+
+        userIsTyping: function() {
+            _isUserTyping = true;
+        },
+
+        userEndedTyping: function () {
+            _isUserTyping = false;
         }
 
 
