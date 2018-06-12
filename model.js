@@ -80,6 +80,23 @@ var gameModel = function () {
 
         */
 
+        testAddCurrentTypedValue: function(input) {
+            (_currentTypedValue === null)  ? _currentTypedValue = input : _currentTypedValue += input;
+        },
+
+        testRemoveCurrentTypedValue: function() {
+            (_currentTypedValue.length === 1) ? _currentTypedValue = "0" : _currentTypedValue = _currentTypedValue.slice(0, _currentTypedValue.length - 1);
+            
+        },
+
+        testActivateFloatMode: function() {
+            if (_currentTypedValue === null) {
+                _currentTypedValue = "0.";
+            } else {
+                (_currentTypedValue.indexOf(".") < 0) ? _currentTypedValue = _currentDisplayedValue + "." : '';
+            }
+        },
+
         removeCurrentTypedValue: function() {
             if (_currentTypedValue.length === 1) {
                 _currentTypedValue = null;
@@ -157,6 +174,10 @@ var gameModel = function () {
 
         userEndedTyping: function () {
             _isUserTyping = false;
+        },
+
+        get isUserTyping() {
+            return _isUserTyping;
         }
 
 

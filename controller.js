@@ -8,10 +8,30 @@ var gameController = function () {
           model.userIsTyping();
           
         },
+
+        testTypeNumber: function () {
+          model.userIsTyping();
+          model.testAddCurrentTypedValue(this.textContent);
+          model.currentDisplayedValue = model.currentTypedValue;
+          if (model.currentDisplayedValue === "0") {
+            model.resetCurrentTypedValue();
+          }
+        },
         
         removeNumber: function() {
           model.removeCurrentTypedValue();
           model.userIsTyping();
+        },
+
+        testRemoveNumber: function() {
+          if (model.isUserTyping && model.currentTypedValue !== null) {
+            model.userIsTyping();
+            model.testRemoveCurrentTypedValue();
+            model.currentDisplayedValue = model.currentTypedValue;
+            if (model.currentDisplayedValue === "0") {
+              model.resetCurrentTypedValue();
+            }
+          }
         },
 
         activateTypingInFloatMode: function() {
@@ -24,8 +44,14 @@ var gameController = function () {
 
         },
 
+        testActivateFloatMode: function () {
+          model.userIsTyping();
+          model.testActivateFloatMode();
+          model.currentDisplayedValue = model.currentTypedValue;
+        },
+
         addMathOperationValues: function () {
-            if (model.currentTypedValue || (model.currentEquationResult === null && model.currentDisplayedValue == "0")) {
+            if (model.isUserTyping || model.currentEquation[0] === undefined) {
               model.addCurrentEquationElements(Number(model.currentDisplayedValue), this.textContent);
               model.resetCurrentTypedValue();
               (model.currentEquation.length > 3) ? model.readyForMathOperation = true : "";

@@ -32,6 +32,10 @@
 - current equation will be stored as an array, however it will be rendered as text - done
 - every chain of same of same precedense operations in the equation should be enclosed in parenthesis when displayed if a higher precendense operation is listed after them
 
+- if user didn't typed another value after pressing the operator button, pressing the operator button will only change the current operation to be performed - done
+- if displayed value is supposed to be a float, but no number is present after '.' (examples, "0." or "1."), the integer before '.' will be added
+- at a start of the application, the initial "0" can be added to the equation - done
+
 
 
 
@@ -49,11 +53,11 @@ var model = gameModel();
 
 view.allNumElements()
   .forEach(button => {
-    button.addEventListener('click', controller.typeNumber);
+    button.addEventListener('click', controller.testTypeNumber);
 });
 
-view.deleteButton().addEventListener('click', controller.removeNumber);
-view.enableFloatModeButton().addEventListener('click', controller.activateTypingInFloatMode);
+view.deleteButton().addEventListener('click', controller.testRemoveNumber);
+view.enableFloatModeButton().addEventListener('click', controller.testActivateFloatMode);
 
 view.mathOperationButtons().forEach(button => {
   button.addEventListener('click', controller.addMathOperationValues);
