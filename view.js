@@ -22,6 +22,10 @@ var gameView = function () {
           return this.el('.control-btn.func.delete');
         },
 
+        switchPlusMinusButton: function () {
+            return this.el(".switch-positive-negative");
+        },
+
         displayCurrentNumberElement: function() {
             return this.el(".current-number span");
         },
