@@ -29,6 +29,7 @@ var gameController = function () {
             model.testRemoveCurrentTypedValue();
             model.currentDisplayedValue = model.currentTypedValue;
             if (model.currentDisplayedValue === "0") {
+              model.isDisplayedValueNegative = false;
               model.resetCurrentTypedValue();
             }
           }
@@ -80,6 +81,15 @@ var gameController = function () {
           if (!model.isUserTyping) {
               model.changeCurrentEquationOperator(this.textContent);
           }
+      },
+
+      switchTypedValuePlusMinus: function() {
+        if (Number(model.currentDisplayedValue)) {
+          model.userIsTyping();
+          model.switchTypedValuePlusMinus();
+          (model.currentTypedValue !== null) ? model.currentDisplayedValue = model.currentTypedValue : model.currentDisplayedValue = model.currentDisplayedValue;
+          (model.currentDisplayedValue.match("-")) ? model.isDisplayedValueNegative = true : model.isDisplayedValueNegative = false;
+        }
       }
       
     }
