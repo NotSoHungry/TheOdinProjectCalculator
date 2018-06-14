@@ -36,7 +36,12 @@
 - if displayed value is supposed to be a float, but no number is present after '.' (examples, "0." or "1."), the integer before '.' will be added
 - at a start of the application, the initial "0" can be added to the equation - done
 
+3. User needs to be able to siwtch between negative and positive value when typing the number
 
+- it should work by removing/adding "minus" ('-') sign before the number
+- it shouldn't work when "0" is displayed
+- it should work even on displayed equation result
+- if applied on displayed equation result, pressing any number will result in replacing the equation result with this number
 
 
 
@@ -58,6 +63,7 @@ view.allNumElements()
 
 view.deleteButton().addEventListener('click', controller.testRemoveNumber);
 view.enableFloatModeButton().addEventListener('click', controller.testActivateFloatMode);
+view.switchPlusMinusButton().addEventListener('click', controller.switchTypedValuePlusMinus);
 
 view.mathOperationButtons().forEach(button => {
   button.addEventListener('click', controller.addMathOperationValues);
