@@ -5,6 +5,7 @@ var gameModel = function () {
         _currentValueTypedIntegerMode = true,
         _currentValueTypedFloatMode = false,
         _currentDisplayedValue = "0",
+        _isDisplayedValueNegative = false;
         _readyForMathOperation = false,
         _currentEquation = [],
         _currentEquationResult = null,
@@ -85,7 +86,7 @@ var gameModel = function () {
         },
 
         testRemoveCurrentTypedValue: function() {
-            (_currentTypedValue.length === 1) ? _currentTypedValue = "0" : _currentTypedValue = _currentTypedValue.slice(0, _currentTypedValue.length - 1);
+            (_currentTypedValue.length === 1 || (_isDisplayedValueNegative && _currentTypedValue.length === 2)) ? _currentTypedValue = "0" : _currentTypedValue = _currentTypedValue.slice(0, _currentTypedValue.length - 1);
             
         },
 
@@ -178,6 +179,22 @@ var gameModel = function () {
 
         get isUserTyping() {
             return _isUserTyping;
+        },
+
+        get isDisplayedValueNegative () {
+            return _isDisplayedValueNegative;
+        },
+
+        set isDisplayedValueNegative (input) {
+            _isDisplayedValueNegative = input;
+        },
+
+        switchTypedValuePlusMinus: function () {
+            if (_currentTypedValue !== null) {
+                (_currentTypedValue.indexOf("-") === -1) ? _currentTypedValue = "-" + _currentTypedValue : _currentTypedValue = _currentTypedValue.slice(1);
+            } else {
+                (_currentDisplayedValue.indexOf("-") === -1) ? _currentDisplayedValue = "-" + _currentDisplayedValue : _currentDisplayedValue = _currentDisplayedValue.slice(1);
+            }
         }
 
 
