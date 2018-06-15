@@ -43,8 +43,10 @@ var gameView = function () {
         },
 
         addWhiteSpaceToDisplayedNumbers: function(inputNum) {
-            let tempArrayToExtractInteger = inputNum.split('.'),
-                tempArrayOnlyInteger = tempArrayToExtractInteger[0].split(''),
+            let isValueNegative = inputNum.match('-') ? true : false,
+                tempArrayToExtractInteger = inputNum.split('.'),
+                tempArrayToRemoveNegativeSign = tempArrayToExtractInteger[0].split('-'),
+                tempArrayOnlyInteger = tempArrayToRemoveNegativeSign[tempArrayToRemoveNegativeSign.length - 1].split(''),
                 tempArrayOnlyIntegerReversed = [];
             for (let i = 0; i < tempArrayOnlyInteger.length; i++) {
               tempArrayOnlyIntegerReversed.unshift(tempArrayOnlyInteger[i]);
@@ -62,7 +64,7 @@ var gameView = function () {
               tempArrayOnlyInteger.unshift(tempArrayOnlyIntegerReversed[i]);
             }
             
-            let strFromTempOnlyIntegerArray = tempArrayOnlyInteger.join('');
+            let strFromTempOnlyIntegerArray = (isValueNegative) ? "-".concat(tempArrayOnlyInteger.join('')) : tempArrayOnlyInteger.join('');
             return (tempArrayToExtractInteger[1] !== undefined) ? strFromTempOnlyIntegerArray.concat(",", tempArrayToExtractInteger[1]) : strFromTempOnlyIntegerArray;
         
         },
