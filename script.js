@@ -43,7 +43,14 @@
 - it should work even on displayed equation result
 - if applied on displayed equation result, pressing any number will result in replacing the equation result with this number
 
+4. User needs to be able to use percentage values with "%" button
 
+Available scenarios:
+
+1. Application in start up -> no equation result, no added number yet to the equation -> will result in 0
+2. Current equation result displayed -> pressing "%" will result computing "equation%" from the current equation result
+3. No result displayed, but number ryped -> pressing "%" will result in computing "typedNumber%" from the current equation result
+4. No result yet, only one number in the current equation -> pressing "%" while typing the second number will result in computing "typedNumber%" from the first number in the equation
 
 
 
