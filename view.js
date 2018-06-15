@@ -42,6 +42,10 @@ var gameView = function () {
             return this.allEl(".math-op");
         },
 
+        calculatePercentageValueButton: function () {
+            return this.El(".percent");
+        },
+
         addWhiteSpaceToDisplayedNumbers: function(inputNum) {
             let isValueNegative = inputNum.match('-') ? true : false,
                 tempArrayToExtractInteger = inputNum.split('.'),
