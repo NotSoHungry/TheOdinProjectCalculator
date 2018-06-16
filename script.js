@@ -36,6 +36,25 @@
 - if displayed value is supposed to be a float, but no number is present after '.' (examples, "0." or "1."), the integer before '.' will be added
 - at a start of the application, the initial "0" can be added to the equation - done
 
+
+Typing scenarios:
+
+  1. Addition:
+    - user started the app, 0 is displayed, nothing is typed yet or the input has been deleted -> typing 0 should not give any effect, typing other numbers should result in replacing 0 with the number
+    - user clicked on any number, while nothing has been typed yet or is just after a math operation and the result is displayed -> displayed number should be replaced with the typed number (even 0)
+
+  a) 0 displayed -> pressing 0 will not give any result, other number will replace 0, pressing '.' will add it
+  b) equation result is displayed -> any number will replace the result, even 0 | oressing '.' will display "0."
+  c) a number other than 0 is displayed -> any pressed number will be added to it
+  d) '.' is a part of the number -> any pressed number will be added after it
+
+  2. Removal:
+
+  a) "0." is displayed - deleting "." will result in only 0 being displayed (scenario "a" in addition scenarios)
+  b) "5." (or different num other than 0) is displayed -> deleting "." will result with only the number displayed (scenario "b" in addition scenarios)
+  c) "0" is displayed -> nothing will happen
+  d) A number other than 0 is displayed ("5", "55" etc) -> if longer than one char, only the last char will be removed, if contains only one char, 0 will be displayed (scenario "a" in addition scenarios)
+
 3. User needs to be able to siwtch between negative and positive value when typing the number
 
 - it should work by removing/adding "minus" ('-') sign before the number
@@ -71,34 +90,10 @@ view.allNumElements()
 view.deleteButton().addEventListener('click', controller.testRemoveNumber);
 view.enableFloatModeButton().addEventListener('click', controller.testActivateFloatMode);
 view.switchPlusMinusButton().addEventListener('click', controller.switchTypedValuePlusMinus);
+view.calculatePercentageValueButton().addEventListener('click', controller.calculatePercentageValue);
 
 view.mathOperationButtons().forEach(button => {
   button.addEventListener('click', controller.addMathOperationValues);
   button.addEventListener('click', controller.performMathOperation);
   button.addEventListener('click', controller.changeCurrentOperator);
 });
-
-
-/*
-
-function addWhiteSpace (str) {
-  let tempArrayToExtractInteger = str.split('.'),
-      tempArrayOnlyInteger = tempArrayToExtractInteger[0].split(''),
-      tempArrayOnlyIntegerReversed = [];
-
-  for (let i = 0; i < tempArrayOnlyInteger.length; i++) {
-    tempArrayOnlyIntegerReversed.unshift(tempArrayOnlyInteger[i]);
-  }
-  
-  return tempArrayOnlyIntegerReversed
-    .reduce((arrayWithWhiteSpace, currentDigit) => {
-      arrayWithWhiteSpace.push(currentDigit)
-      if (arrayWithWhiteSpace.length % 3 === 0) {
-        arrayWithWhiteSpace.push(' ');
-      }
-      return arrayWithWhiteSpace;
-  }, [])
-    .join('');
-}
-
-*/
