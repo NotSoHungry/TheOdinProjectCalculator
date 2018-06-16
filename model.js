@@ -195,6 +195,11 @@ var gameModel = function () {
             } else {
                 (_currentDisplayedValue.indexOf("-") === -1) ? _currentDisplayedValue = "-" + _currentDisplayedValue : _currentDisplayedValue = _currentDisplayedValue.slice(1);
             }
+        },
+
+        calculatePercentageValue: function (percentageValue, modifiedNumber) {
+            let negativeValueSign = (modifiedNumber.match("-")) ? modifiedNumber.match("-")[0] : "";
+            return negativeValueSign + String(modifiedNumber * (percentageValue / 100));
         }
 
 
