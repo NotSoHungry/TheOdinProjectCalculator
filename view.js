@@ -43,7 +43,7 @@ var gameView = function () {
         },
 
         calculatePercentageValueButton: function () {
-            return this.El(".percent");
+            return this.el(".percent");
         },
 
         addWhiteSpaceToDisplayedNumbers: function(inputNum) {
