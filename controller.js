@@ -90,8 +90,20 @@ var gameController = function () {
           (model.currentTypedValue !== null) ? model.currentDisplayedValue = model.currentTypedValue : model.currentDisplayedValue = model.currentDisplayedValue;
           (model.currentDisplayedValue.match("-")) ? model.isDisplayedValueNegative = true : model.isDisplayedValueNegative = false;
         }
-      }
-      
+      },
+
+      calculatePercentageValue: function () {
+        let calculatedValue = model.currentDisplayedValue;
+        model.userIsTyping();
+        model.resetCurrentTypedValue();
+        if (String(model.currentEquationResult).match(/\d/)) {
+          model.currentDisplayedValue = model.calculatePercentageValue(calculatedValue, model.currentEquationResult);
+        } else if (model.currentEquation.length === 2) {
+          model.currentDisplayedValue = model.calculatePercentageValue(calculatedValue, model.currentEquation[0]);
+        } else {
+          model.currentDisplayedValue = "0";
+        }
+      }  
     }
 
 
